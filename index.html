@@ -30,9 +30,19 @@
   <link rel="icon" type="image/png" href="favicon.png?v=4"/>
 
   <title>Abbott - Admin Panel</title>
-  <link rel="manifest" href="manifest.json?v=4">
+  <link rel="manifest" href="manifest.json?v=5">
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+  <script>
+    // Unregister legacy Flutter service worker to prevent aggressive caching
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script>
+  <script src="flutter_bootstrap.js?v=20261124_1347" async></script>
 </body>
 </html>
